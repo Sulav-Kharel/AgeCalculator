@@ -18,12 +18,18 @@ body {
 }
 
 input {
+    padding: 10%;
+}
 
+img {
+    background: var(--Purple);
+    border-radius: 50%;
+    padding: 2%;
 }
 
 .card-container {
     background-color: var(--White);
-    width: 60%;
+    width: 50%;
     margin-inline: auto;
     margin-top: 10%;
     border-radius: 10px 10px 100px 10px;
@@ -38,6 +44,12 @@ input {
 .date {
     display: grid;
     justify-items: start;
+}
+
+.card-img {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
 }
 
 @media (max-width: 768px) {
