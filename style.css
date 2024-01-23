@@ -1,0 +1,49 @@
+:root {
+    --Purple: hsl(259, 100%, 65%);
+    --Lightred: hsl(0, 100%, 67%);
+    --White: hsl(0, 0%, 100%);
+    --Offwhite: hsl(0, 0%, 94%);
+    --Lightgrey: hsl(0, 0%, 86%);
+    --Smokeygrey: hsl(0, 1%, 44%);
+    --Offblack: hsl(0, 0%, 8%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--Lightgrey);
+}
+
+input {
+
+}
+
+.card-container {
+    background-color: var(--White);
+    width: 60%;
+    margin-inline: auto;
+    margin-top: 10%;
+    border-radius: 10px 10px 100px 10px;
+    padding: 10%;
+}
+
+.date-selection {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.date {
+    display: grid;
+    justify-items: start;
+}
+
+@media (max-width: 768px) {
+    
+}
+
+@media (min-width: 768px) {
+    
+}
