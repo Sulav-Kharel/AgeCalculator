@@ -25,19 +25,37 @@
       <div class="date">
         <label for="">DAY</label>
         <input type="number" id="day" placeholder="DD">
+        <p class="error error-message-day"></p>
       </div>
       <div class="date">
         <label for="">MONTH</label>
         <input type="number" id="month" placeholder="MM">
+        <p class="error error-message-month"></p>
       </div>
       <div class="date">
-        <label for="">MONTH</label>
-        <input type="number" id="year" placeholder="YY">
+        <label for="">YEAR</label>
+        <input type="number" id="year" placeholder="YYYY">
+        <p class="error error-message-year"></p>
       </div>
     </div>
+
     <div class="card-img">
       <hr>
-      <img src="assets/images/icon-arrow.svg" alt="">
+      <img src="assets/images/icon-arrow.svg" alt="" id="submit">
+      <hr class="hide">
+    </div>
+    
+    <div class="card-result">
+      <h1 class="dash" id="years">--</h1>
+      <h1>years</h1>
+    </div>
+    <div class="card-result">
+      <h1 class="dash" id="months">--</h1>
+      <h1>months</h1>
+    </div>
+    <div class="card-result">
+      <h1 class="dash" id="days">--</h1>
+      <h1>days</h1>
     </div>
     
   </div>
