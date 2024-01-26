@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', function(){
     var month = document.getElementById('month');
     var year = document.getElementById('year');
     var submit = document.getElementById('submit');
+    var inputBox = document.querySelectorAll('input[type="number"]');
+    var labels = document.querySelectorAll('.date label');
 
     var cardResults = document.querySelectorAll(".card-result");
 
@@ -28,24 +30,45 @@ document.addEventListener('DOMContentLoaded', function(){
 
         var errorMessages = [];
 
-        // Validation checks
-        var maxDaysInMonth = new Date(userEnteredYear, userEnteredMonth, 0).getDate();
+        // Check if any field is empty
+        if (!day.value.trim() && !month.value.trim() && !year.value.trim()) {
+            errorMessages.push('All fields are required');
+            changeStyle();
+        } else if (!day.value.trim() || !month.value.trim() || !year.value.trim()) {
+            changeStyle();
+        } else {
+            // Validation checks
+            var maxDaysInMonth = new Date(userEnteredYear, userEnteredMonth, 0).getDate();
 
-        if (userEnteredDay < 1 || userEnteredDay > maxDaysInMonth || userEnteredDay > 31 || isNaN(userEnteredDay)) {
-            errorMessageDay.textContent = 'Must be a valid day';
-            // errorMessages.push("Must be a valid day");
-            return;
+            if (isNaN(userEnteredDay)) {
+                errorMessageDay.textContent = 'The field is required';
+            } else if (userEnteredDay < 1 || userEnteredDay > maxDaysInMonth || userEnteredDay > 31) {
+                errorMessageDay.textContent = 'Must be a valid day';
+                return;
+            }
+
+            if (isNaN(userEnteredMonth)) {
+                errorMessageMonth.textContent = 'The field is required';
+            } else if (userEnteredMonth < 1 || userEnteredMonth > 12) {
+                errorMessageMonth.textContent = 'Must be a valid month';
+                return;
+            }
+
+            if (isNaN(userEnteredYear)) {
+                errorMessageYear.textContent = 'The field is required';
+            } else if (userEnteredYear > currentYear || (userEnteredYear === currentYear && userEnteredMonth < currentMonth) || (userEnteredYear === currentYear && userEnteredMonth === currentMonth && userEnteredDay < currentDay)) {
+                errorMessageYear.textContent = 'Must be a valid year';
+                return;
+            }
         }
 
-        if (userEnteredMonth < 1 || userEnteredMonth > 12 || isNaN(userEnteredMonth)) {
-            errorMessageMonth.textContent = 'Must be a valid month';
-            // errorMessages.push("Must be a valid month");
-            return;
-        }
-
-        if (userEnteredYear > currentYear || (userEnteredYear === currentYear && userEnteredMonth < currentMonth) || (userEnteredYear === currentYear && userEnteredMonth === currentMonth && userEnteredDay < currentDay || isNaN(userEnteredYear))) {
-            errorMessageYear.textContent = 'Must be a valid year';
-            // errorMessages.push("Must be a valid year");
+        // Display all error messages
+        if (errorMessages.length > 0) {
+            errorMessages.forEach(function (message) {
+                errorMessageDay.textContent = message;
+                errorMessageMonth.textContent = message;
+                errorMessageYear.textContent = message;
+            });
             return;
         }
 
@@ -72,6 +95,14 @@ document.addEventListener('DOMContentLoaded', function(){
 
         var userAgeInDays = document.querySelector('#days');
         userAgeInDays.innerHTML = ageInDays;
+    });
 
-    });  
+    function changeStyle() {
+        inputBox.forEach(function (input) {
+            input.style.borderColor = 'var(--Lightred)';
+        });
+        labels.forEach(function (label) {
+            label.style.color = 'var(--Lightred)';
+        });
+    };
 });
